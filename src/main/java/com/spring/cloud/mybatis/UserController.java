@@ -1,7 +1,5 @@
 package com.spring.cloud.mybatis;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -49,7 +47,8 @@ public class UserController {
 	@RequestMapping("/delete")
 	public void deleteUser(User user, HttpServletResponse response) throws IOException {
 		userService.deleteUser(user);
-		response.sendRedirect("list");
+		//response.sendRedirect("http://localhost:8080/index");
+		response.sendRedirect("list");//  重定向
 	}
 	
 	@RequestMapping("/edit")
