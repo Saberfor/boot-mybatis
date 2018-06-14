@@ -1,5 +1,7 @@
 package com.spring.cloud.mybatis;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -11,6 +13,9 @@ public class User {
     private String name;
     private String gender;
     private Integer age;
+    private String company;
+    private String relationId;
+    private List<UserRelation> userRelations;
     
     public User(String name, String gender, Integer age){
     	this.name = name;

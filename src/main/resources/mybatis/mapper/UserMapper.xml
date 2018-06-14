@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 映射dao -->  
+<mapper namespace="com.spring.cloud.mybatis.UserMapper">  
+  <!-- 结果集类型 -->  
+  <resultMap id="result" type="com.spring.cloud.mybatis.User">  
+  	<result column="id" property="id"/>
+  	<result column="name" property="name"/>
+  	<result column="gender" property="gender"/>
+  	<result column="age" property="age"/>
+  	<result column="company" property="company"/>
+  	<result column="company_id" property="relationId"/>
+  </resultMap>  
+  
+  <select id="findAll3" resultMap="result">
+  	SELECT u.id,u.NAME,u.gender,u.age,ur.company,ur.company_id FROM user u inner join user_relation ur on u.id=ur.user_id
+  </select>
+</mapper> 

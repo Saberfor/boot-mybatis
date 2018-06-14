@@ -49,6 +49,7 @@ public class UserController {
 		userService.deleteUser(user);
 		//response.sendRedirect("http://localhost:8080/index");
 		response.sendRedirect("list");//  重定向
+		//response.sendRedirect("/index?id=5");
 	}
 	
 	@RequestMapping("/edit")
@@ -67,5 +68,35 @@ public class UserController {
 		User user = userService.findById(userId);
 		map.addAttribute("user", user);
 		return new ModelAndView("user/info", map);
+	}
+	
+	@RequestMapping("/list2")
+	public ModelAndView listUser2(ModelMap map) {
+		List<User> list = userService.listUser2();
+		map.addAttribute("list", list);
+		return new ModelAndView("user/list", map);
+	}
+	
+	@RequestMapping("/list3")
+	public ModelAndView listUser3(ModelMap map) {
+		List<User> list = userService.listUser3();
+		map.addAttribute("list", list);
+		return new ModelAndView("user/list", map);
+	}
+	
+	@RequestMapping("/list4")
+	public ModelAndView listUser4(ModelMap map) {
+		List<User> list = userService.listUser4(3);
+		/*List<UserRelation> lists = userService.findUserRelation(1);
+		lists.stream().forEach(a -> System.out.println(a.getRelationId()));*/
+		if(list.get(0).getUserRelations() != null){
+			list.stream().forEach(user -> user.getUserRelations().stream().forEach(
+					actionRelation -> {
+						System.out.println(actionRelation.getCompany());
+						System.out.println(actionRelation.getRelationId());
+					}));
+		}
+		map.addAttribute("list", list);
+		return new ModelAndView("user/list", map);
 	}
 }

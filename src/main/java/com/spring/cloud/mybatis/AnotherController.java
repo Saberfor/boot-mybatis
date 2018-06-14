@@ -9,7 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class AnotherController {
 
 	@RequestMapping("/index")
-	public ModelAndView listUser(ModelMap map) {
+	public ModelAndView listUser(ModelMap map, String id) {
+		map.addAttribute("id", id);
 		return new ModelAndView("index", map);
 	}
 }

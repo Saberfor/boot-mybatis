@@ -32,7 +32,7 @@
                     <td th:text="${list.name}"></td>
                     <td th:text="${list.gender}"></td>
                     <td th:text="${list.age}"></td>
-                    <td th:text="${list.company}"></td>
+                    <td th:each="${list.company}"></td>
 					<td th:text="${list.relationId}"></td>
 
                     <td><a th:href ="@{info(id=${list.id})}">查看</a></td>

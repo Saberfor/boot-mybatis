@@ -15,6 +15,18 @@ public class UserService {
 		return mapper.findAll();
 	}
 	
+	public List<User> listUser2(){
+		return mapper.findAll2();
+	}
+	
+	public List<User> listUser3(){
+		return mapper.findAll3();
+	}
+	
+	public List<User> listUser4(Integer id){
+		return mapper.findAll4(id);
+	}
+	
 	public int addUser(User user){
 		return mapper.addUser(user);
 	}
@@ -29,5 +41,9 @@ public class UserService {
 	
 	public User findById(User user){
 		return mapper.findById(user);
+	}
+	
+	public List<UserRelation> findUserRelation(Integer company_id){
+		return mapper.findUserRelation(company_id);
 	}
 }
